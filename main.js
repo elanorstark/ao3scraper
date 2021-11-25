@@ -9,11 +9,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     const fandomListElement = document.getElementById("fandom-list");
-    const { fandoms } = await chrome.storage.local.get(['fandoms']);
+    const { topfan } = await chrome.storage.local.get(['topfan']);
     
-    fandoms.forEach(fandom => {
+    topfan.forEach(fandom => {
         const li = document.createElement("li");
         li.innerText = fandom;
         fandomListElement.appendChild(li);
+    });
+
+    const freeformListElement = document.getElementById("freeform-list");
+    const { topfreeform } = await chrome.storage.local.get(['topfreeform']);
+    
+    topfreeform.forEach(freeform => {
+        const li = document.createElement("li");
+        li.innerText = freeform;
+        freeformListElement.appendChild(li);
     });
 })
